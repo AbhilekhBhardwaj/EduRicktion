@@ -1,0 +1,21 @@
+/* src/pages/Home.css */
+.home-container {
+  background-color: black;
+  color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-content {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.home-content h2 {
+  font-size: 36px;
+}
+
+.home-content p {
+  font-size: 18px;
+}
