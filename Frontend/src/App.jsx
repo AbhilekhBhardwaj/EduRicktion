@@ -1,22 +1,22 @@
-// src/App.js
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./components/Home";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./components/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import CoursePage from "./components/CoursePage"; // Import the CoursePage component
+import Home2 from "./components/Home2";
+import PurchasedCourses from "./components/PurchasedCourse"; // Import PurchasedCourses
 
-const App = () => {
+function App() {
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
-                <Route path="/courses" element={<CoursePage />} /> {/* Add the CoursePage route */}
+                <Route path="/home2" element={<Home2 />} />
+                <Route path="/purchased-courses" element={<PurchasedCourses />} />
             </Routes>
         </Router>
     );
-};
+}
 
 export default App;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
@@ -9,7 +9,7 @@ const Login = () => {
         password: "",
     });
     const [error, setError] = useState("");
-    const navigate = useNavigate(); // Use React Router's navigate function
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -28,8 +28,8 @@ const Login = () => {
             const token = response.data.token;
             localStorage.setItem("authToken", token);
 
-            // Redirect to the course page, passing the token as a query parameter
-            navigate(`/courses?token=${token}`);
+            // Navigate to Home2 page
+            navigate("/home2");
         } catch (error) {
             setError(error.response?.data?.message || "Error logging in");
             console.error(error);
@@ -58,6 +58,7 @@ const Login = () => {
                     />
                     <button type="submit">Login</button>
                 </form>
+                <Link to="/" className="back-button">Back to Home</Link>
             </div>
         </div>
     );

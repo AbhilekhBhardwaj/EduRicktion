@@ -1,6 +1,6 @@
-// src/components/Signup.js
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
 import "./Signup.css";
 
 const Signup = () => {
@@ -9,11 +9,10 @@ const Signup = () => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [message, setMessage] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        console.log(password,"FE password");
 
         try {
             const response = await axios.post("http://localhost:3000/api/v1/user/signup", {
@@ -22,8 +21,12 @@ const Signup = () => {
                 firstName,
                 lastName,
             });
+
             setMessage("User created successfully!");
             console.log("User ID:", response.data.userId);
+
+            // Navigate to Home2 page
+            navigate("/home2");
         } catch (err) {
             setMessage(err.response ? err.response.data.message : "Server error");
         }
@@ -64,6 +67,7 @@ const Signup = () => {
                 <button type="submit">Sign Up</button>
             </form>
             {message && <p>{message}</p>}
+            <Link to="/" className="back-button">Back to Home</Link>
         </div>
     );
 };
