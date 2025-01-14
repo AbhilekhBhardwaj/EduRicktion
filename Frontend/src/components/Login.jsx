@@ -24,9 +24,10 @@ const Login = () => {
         try {
             const response = await axios.post("http://localhost:3000/api/v1/user/signin", formData);
 
-            // Save the token in localStorage
+            // Save the token and email in localStorage
             const token = response.data.token;
             localStorage.setItem("authToken", token);
+            localStorage.setItem("userEmail", formData.email);
 
             // Navigate to Home2 page
             navigate("/home2");
